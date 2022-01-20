@@ -1,0 +1,22 @@
+===============================================================================
+    $Id: README,v 1.4 2002/02/18 20:01:00 route Exp $
+    LIBSF (c) 2002 Shawn Bracken <shawn@infonexus.com>
+          (c) 2002 Mike D. Schiffman <mike@infonexus.com>
+          http://www.packetfactory.net/libsf
+===============================================================================
+
+    A C library for remote os detection via IP stack fingerprinting.
+
+Installation:
+-------------
+0. nroff -man man/sf.3 | less
+1. You'll need to build and install:
+   a. libnet 1.1.0 (http://www.packetfactory.net/libnet)
+   b. libpcap 0.6.x+ (http://www.tcpdump.org)
+   c. libdb old API - should be included with most modern OS releases -
+      (http://www.sleepycat.com/)
+2. ./configure && make && make install
+3. cd import ; ./db_import -a fp-file
+4. cp libsf.db /usr/local/share/libsf
+
+EOF

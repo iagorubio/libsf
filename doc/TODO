@@ -1,0 +1,45 @@
+===============================================================================
+    $Id: TODO,v 1.2 2002/02/18 20:01:00 route Exp $
+    LIBSF (c) 2002 Shawn Bracken <shawn@infonexus.com>
+          (c) 2002 Mike D. Schiffman <mike@infonexus.com>
+                      http://www.packetfactory.net/libsf
+===============================================================================
+
+
+    TODO LIST
+
+    * combine both databases into a single MySQL database.
+
+    * add xprobe-style ICMP scans
+
+    - timeouts on the port scans.
+
+    - add the debug and verbose messaging
+
+    - Finish passive ID section (the infrastructure is all there.. it's just
+      a little legwork) .
+
+    - Add -p (profiling) option to db_import.  This option would profile a
+      specified IP address and add it to the database after querying the user
+      for its type.
+
+    - Add support for other sig db types
+
+    - Add some nice easy/intuitive functions for displaying/modifying the 
+      database sigs via db_import.  Possibly a scripting/interpretive language
+      for easily creating sigs.
+
+    - Database layout optimization
+
+    - Portability testing
+
+    - Investigate a possible caching system for unknown/new sigs
+
+    - Signature authenticity and verification system that would evaluate
+      the signature database to gain a higher trustworthyness and base score
+      (advanced scoring) based upon amount of times this sig has been 
+      encountered in the wild with perfect (verfiable) accuracy.
+
+    - Peer review and code optimization
+
+EOF

@@ -1,0 +1,11 @@
+===============================================================================
+    $Id: BUGS,v 1.1 2002/02/10 23:14:49 route Exp $
+    LIBSF (c) 2002 Shawn Bracken <shawn@infonexus.com>
+          (c) 2002 Mike D. Schiffman <mike@infonexus.com>
+                      http://www.packetfactory.net/libsf
+===============================================================================
+
+
+    BUG LIST
+
+    - linux no work

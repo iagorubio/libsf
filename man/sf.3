@@ -1,0 +1,171 @@
+.\"
+.\" $Id: sf.3,v 1.2 2002/02/18 20:01:06 route Exp $
+.\"
+.\" Copyright (c) 2002 Mike D. Schiffman <mike@infonexus.com> 
+.\"
+.\"
+.TH LIBSF 3  "07 12 2002" "libsf 0.1" "Application Programmer's Manual"
+.SH NAME
+libsf \- Stack Fingerprinting Library
+
+.SH DESCRIPTION
+Well wouldn't it just be splendid to be able to build stack fingerprinting
+into your own tools?  Hmmm?  Hmmm?  Sure it would.
+.ft B
+Libsf
+.ft 
+Allows the application programmer to build IP stack fingerprinting into 
+his or her own wonderful network security tools.  This library is a very
+early work and needs some hardcore tender loving care.  Caveat Emptor.
+
+.SH DISCLAIMER
+So I would recommend you check out the sample code that shows pretty succinctly
+how to use the API.
+.ft B
+Libsf
+.ft
+is basically nmap and p0f rolled into a library.
+Except the p0f support isn't fully built in yet.  And this might not be
+portable to anything beyond bsd and linux.  And the linux port needs better
+libdb autoconf macros to find the proper db library and version.  F that, we
+really need to port the database to MySQL.  Any takers?  And I've only really
+tested on OpenBSD and linux.
+
+.SH SYNOPSIS
+.nf
+.ft B
+#include <libsf.h>
+.ft
+.LP
+
+.SH FRAMEWORK FUNCTIONS
+.nf
+.LP
+
+.ft B
+libsf_t *
+.ft
+libsf_init(u_char type, char *device, char *target, u_short o_port,
+u_short c_port, u_char flags, char *err_buf);
+
+.ft B
+int
+.ft
+libsf_set_timeout(libsf_t *s, u_short timeout);
+
+.ft B
+void
+.ft
+libsf_destroy(libsf_t *s);
+
+.ft B
+char *
+.ft
+libsf_get_error(libsf_t *s);
+
+
+.SH FINGERPRINT FUNCTIONS
+.nf
+.LP
+
+.ft B
+int
+.ft
+libsf_active_id(libsf_t *s);
+
+.ft B
+int
+.ft
+libsf_passive_id(libsf_t *s);
+
+
+.SH RESULTS FUNCTIONS
+.nf
+.LP
+
+.ft B
+int
+.ft
+libsf_os_get_hs(libsf_t *s);
+
+.ft B
+int
+.ft
+libsf_os_get_tm(libsf_t *s);
+
+.ft B
+char *
+.ft
+libsf_os_get_next(libsf_t *s);
+
+.ft B
+char *
+.ft
+libsf_os_get_match(libsf_t *s, u_short score);
+
+
+.SH INITIALIZATION FUNCTIONS
+.nf
+.LP
+\fBlibsf_init()\fP initializes the libsf library.  \fBtype\fP specifies the
+type of scan, either \fBLIBSF_ACTIVE\fP or \fBLIBSF_PASSIVE\fP.  \fBdevice\fP
+is the canonical name of the device to use, or NULL to let the library
+determine a suitable device.  \fBtarget\fP is the IP address in
+presentation format of the host to fingerprint.  \fBo_port\fP is an
+open TCP port on the target host to use for tests, or 0 to let the
+library figure it out.  \fBc_port\fP is a closed TCP port on the target
+host, or 0 to let the library figure it out.  \fBflags\fP is either 0 or
+one or more of the following control flags:
+
+Flag                    Meaning
+\fBLIBSF_CTRL_VERBOSE\fP      Be verbose
+\fBLIBSF_CTRL_DEBUG\fP        Dump debugging information
+...
+
+\fBerrbuf\fP is an char buffer of at least LIBSF_ERRBUF_SIZE to hold any
+possible error messages.  Upon success the function returns a valid
+libsf descriptor; upon failure the function returns NULL and \fBerrbuf\fP
+will tell you why.  Maybe.
+
+\fBlibsf_destroy()\fP shutdowns a libsf session \fBs\fP.  All memory is freed
+and all open descriptors are closed.
+
+\fBlibsf_get_error()\fP returns the last error message that happened within
+the context of \fBs\fP.  If no error has occured, the function returns NULL.
+
+.SH FINGERPRINT FUNCTIONS
+.nf
+.LP
+\fBlibsf_active_id()\fP performs an active fingerprint of the target host.
+
+\fBlibsf_passive_id()\fP does nothing at this point.  It will soon though.
+
+
+.SH RESULTS FUNCTIONS
+.nf
+.LP
+\fBlibsf_os_get_hs()\fP returns the highest scored OS.
+
+\fBlibsf_os_get_tm()\fP returns the total number of matches.
+
+\fBlibsf_os_get_match()\fP returns the next match from the OS list.  The
+function returns the string of the next OS in the list matching \fBscore\fP.
+When no more matches are present the function returns NULL.
+
+\fBlibsf_os_get_next()\fP
+
+.SH SEE ALSO
+pcap(3), libnet(3), nmap(1), p0f(1)
+.SH AUTHORS
+.ti
+Shawn Bracken <shawn@infonexus.com>
+.ti
+Mike D. Schiffman <mike@infonexus.com>
+.LP
+The current version is always available:
+.LP
+.RS
+.I http://www.packetfactory.net/Projects/libsf
+.RE
+.SH BUGS
+Probably Tons.  Please send bug reports to mike@infonexus.com.
