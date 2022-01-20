@@ -47,7 +47,7 @@ In the original BUGS file it's stated a single bug "linux no work". I hope it do
 and in my initial tests it seems to do it, but use it at your
 how risk.
 
-The license seems to be MIT but it's not explicitly stated. The original license headers should be applied.
+The license seems to be [2-Clause BSD](https://opensource.org/licenses/BSD-2-Clause) but it's not explicitly stated. The original license headers should be applied.
 
 The changes in the library are pretty much cosmetic/style to fix compiler
 errors, and the build scripts.
