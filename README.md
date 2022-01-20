@@ -72,6 +72,8 @@ file at "import" directory as a parameter.
 I have no tested installation so far so install it at your own risk or do it by
 hand.
 
+Please read the [wiki](https://github.com/iagorubio/libsf/wiki)  main page before to download the library !
+
 Enjoy !
 
 
