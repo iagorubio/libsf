@@ -35,7 +35,7 @@ I expect it to work as-is on any RedHat family distro
 I compiled it with the following required library versions:
 
 * libnet-1.1 (libnet-1.1.6-15.el8.x86_64)
-* libdb-5.3 (libdb-5.3.28-42.el8_4.x86_64 but the API reuired is 1.85 I guess)
+* libdb-5.3 (libdb-5.3.28-42.el8_4.x86_64 but the API required is 1.85 I guess)
 * libpcap-1.9 (libpcap-1.9.1-5.el8.x86_64)
 
 The autotools script was FUBAR so I swaped the build system to CMake.
