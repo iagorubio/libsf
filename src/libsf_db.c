@@ -51,7 +51,7 @@ libsf_db_check(libsf_t *s, u_int test_type, u_char *tcp_pkt, u_char
     DBT key, data;
 
     /* rewind db back to start */
-    s->db->seq(s->db, NULL, NULL, R_FIRST);
+    s->db->seq(s->db, &key, &data, R_FIRST);
 
     score = 0;
     /* search DB entries for specified test-type */
